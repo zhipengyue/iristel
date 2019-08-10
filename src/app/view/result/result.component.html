@@ -1,0 +1,13 @@
+<section class="content result">
+    <h1>Payment result</h1>
+    <div class="card-outer">
+      <div class="alert alert-success" role="alert" *ngIf="payService.payResult">
+          <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Successful payment</strong>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="!payService.payResult">
+          <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Failed</strong> Payment failed,<a href="#" (click)="redo()">you can click this link to try again.</a>
+      </div>
+    </div>
+  </section>
+  
+  

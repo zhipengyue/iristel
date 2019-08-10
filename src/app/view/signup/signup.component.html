@@ -1,0 +1,65 @@
+
+<section class="content signup">
+  <h1>Sign up</h1>
+  <div class="card-outer">
+    <form [formGroup]="signupForm" (ngSubmit)="nextPage()">
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.companyname.valid}">
+        <label for="companyname">Company name</label>
+        <input type="text" formControlName="companyname" [(ngModel)]="infomationService.signup_form.companyname" class="form-control" id="companyname" name="compyname" placeholder="Company name">
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.address.valid}">
+        <label for="address">Company address</label>
+        <input type="text" formControlName="address" [(ngModel)]="infomationService.signup_form.address" class="form-control" id="address" name="address" placeholder="Company address">
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.firstname.valid}">
+        <label for="firstname">Frist name</label>
+        <input type="text" formControlName="firstname" [(ngModel)]="infomationService.signup_form.firstname" class="form-control" id="firstname" name="firstname" placeholder="Frist name">
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.lastname.valid}">
+        <label for="lastname">Last name</label>
+        <input type="text" formControlName="lastname" [(ngModel)]="infomationService.signup_form.lastname" class="form-control" name="lastname" id="lastname" placeholder="Last name">
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.email.valid}">
+        <label for="email">Email</label>
+        <div class="form-item">
+            <input type="email" formControlName="email" [(ngModel)]="infomationService.signup_form.email" class="form-control" id="email" name="email" placeholder="email">
+        </div>
+        <div class="form-item" style="margin-top: 10px;" [ngClass]="{'validFailed':!infomationService.formValid.code.valid}">
+          <input type="number" formControlName="code" class="verify-email-code form-control" [(ngModel)]="infomationService.signup_form.code" id="code" name="code">
+          <input type="text" formControlName="key" class="verify-email-key form-control hide" [(ngModel)]="infomationService.signup_form.key" id="key" name="key">
+          <div class="get-code-btn" [ngClass]="{'disabled':infomationService.signup_email_getcodebtn_disabled||verifyEmailBtnDisable}" (click)="getEmailVerifyCode()">Get email verification code
+            <ng-container *ngIf="verifyEmailBtnDisable">
+                ({{verifyEmailBtnSeconds}})
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.phone.valid}">
+        <label for="phone">Phone number</label>
+        <input type="tel" formControlName="phone" [(ngModel)]="infomationService.signup_form.phone" class="form-control" id="phone" name="phone" placeholder="Phone number">
+      </div>
+      <div class="form-group">
+          <div id="recaptchaContainer" class="g-recaptcha"></div>
+      </div>
+      <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.count.valid||!infomationService.formValid.total.valid}">
+        <label for="liscencecount">Number of endpoints(licenses)</label>
+        <div class="totalprice">
+          <div class="count">
+            <input type="number" [(ngModel)]="infomationService.signup_form.count" name="count" formControlName="count">
+            <input class="hide" type="number" [(ngModel)]="infomationService.signup_form.total" name="total" formControlName="total">
+          </div>
+          <button class="request-price-btn" type="button" [ngClass]="{'disabled':infomationService.signup_form.count<=0}" (click)="getTotalProce()">Get total price</button>
+          <div class="total">
+            <i class="price">{{infomationService.signup_form.total}}</i> <i>{{infomationService.currency}}</i>
+          </div>
+        </div>
+
+      </div>
+      {{infomationService.signup_submiteBtn_disabled}} {{!this.infomationService.signup_form.isNotRobot}}
+      <button type="button" *ngIf="infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn" [ngClass]="{'disabled':infomationService.signup_submiteBtn_disabled||!this.infomationService.signup_form.isNotRobot}">Next</button>
+      <button type="submit" *ngIf="!infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn">Next</button>
+      <div class="clear"></div>
+    </form>
+  </div>
+</section>
+

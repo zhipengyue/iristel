@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "iristel:build"
+            "browserTarget": "iristel:build",
+            "proxyConfig":"proxyconfig-dev.json"
           },
           "configurations": {
             "production": {

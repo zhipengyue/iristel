@@ -1,0 +1,57 @@
+<!-- <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+  <input type="text" formControlName="name" placeholder="Jane Doe">
+  <div id="card-element" class="field"></div>
+  <button type="submit">
+    BUY
+  </button>
+</form> -->
+
+
+<section class="content payment">
+  <h1>Payment</h1>
+  <div class="card-outer">
+    <form [formGroup]="stripeTest" (ngSubmit)="buy()">
+      <div class="form-group">
+        <label for="firstname">Frist name</label>
+        <div class="text">{{infomationService.signup_form.firstname}}</div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+        <div class="text">{{infomationService.signup_form.lastname}}</div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="email">Email</label>
+        <div class="text">{{infomationService.signup_form.email}}</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <div class="text">{{infomationService.signup_form.phone}}</div>
+      </div>
+      <div class="form-group">
+        <label for="liscencecount">Payment amount</label>
+        <div class="totalprice">
+          <div class="total">
+            <i class="price">{{infomationService.signup_form.total}}</i> <i>CAD</i>
+          </div>
+        </div>
+      </div> -->
+
+      <div id="card-element" class="field"></div>
+      <div class="button-container">
+        <ng-container *ngIf="isInRequesting">
+            <button type="button" class="btn btn-default submit-btn disabled">
+              <div class="loader-container">
+                <div class="loader"></div>
+              </div>
+              <div class="text">Buy</div>
+            </button>
+        </ng-container>
+        <ng-container *ngIf="!isInRequesting">
+            <button type="submit" class="btn btn-default submit-btn">Buy</button>
+        </ng-container>
+      </div>
+      <div class="clear"></div>
+    </form>
+  </div>
+</section>
+
