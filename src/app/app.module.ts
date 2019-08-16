@@ -23,7 +23,7 @@ import { ConfirmComponent } from './view/confirm/confirm.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxStripeModule.forRoot('pk_test_qyKY3G6TQGtOrrnfULZ16Ez3'),
+    NgxStripeModule.forRoot(),//forRoot('pk_test_qyKY3G6TQGtOrrnfULZ16Ez3'),
     AppRoutingModule
   ],
   providers: [],

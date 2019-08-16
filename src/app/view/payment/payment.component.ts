@@ -1,5 +1,4 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
-import {PayService} from '../../services/pay.service';
 import { InfoMationService } from '../../services/infomation.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StripeService, Elements, Element as StripeElement, ElementsOptions,StripeJS,StripeInstance,StripeFactoryService} from "ngx-stripe";
@@ -27,14 +26,13 @@ export class PaymentComponent implements OnInit,AfterViewInit {
    public infomationService:InfoMationService,
    private stripeFactory:StripeFactoryService,
    private router:Router,
-   private payService:PayService,
    private requestService:RequestService
   ) { }
 
   ngOnInit() {
     // console.log(this.payService.getStripe());
     // this.stripe=this.stripeFactory.create(this.infomationService.stripePublicKey);
-    // this.stripeService.setKey(this.infomationService.stripePublicKey);
+    this.stripeService.setKey(this.infomationService.stripePublicKey);
     // console.log(this.infomationService.stripePublicKey)
     console.log(this.infomationService.stripePublicKey)
     this.stripeTest = this.fb.group({
@@ -88,13 +86,17 @@ export class PaymentComponent implements OnInit,AfterViewInit {
           this.requestService.post('/payment/charge'+this.requestService.getParamStr(params),params).subscribe(result=>{
             console.log(result)
             this.isInRequesting=false;
-            if(result['data']&&result['data']['statusCode']&&result['data']['statusCode']=='succeeded'){
-              this.payService.payResult=true;
+            if(result['data']&&result['data']['status']&&result['data']['status']=='succeeded'){
+              this.infomationService.payResult=true;
             }else{
-              this.payService.payResult=false;
+              this.infomationService.payResult=false;
             }
+            this.infomationService.haveRequestPayment=true;
+            this.router.navigate(['./view/result']);
+          },error=>{
+            this.infomationService.setPayResult();
           })
-          // this.router.navigate(['./view/reuslt'])
+          
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);

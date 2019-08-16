@@ -10,6 +10,9 @@
 <section class="content payment">
   <h1>Payment</h1>
   <div class="card-outer">
+    <div class="alert alert-danger" role="alert" *ngIf="!infomationService.payResult">
+        Payment failed, please try again
+    </div>
     <form [formGroup]="stripeTest" (ngSubmit)="buy()">
       <div class="form-group">
         <label for="firstname">Frist name</label>

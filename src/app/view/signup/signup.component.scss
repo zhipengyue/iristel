@@ -20,6 +20,13 @@
       }
       
     }
+    .error-container{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.6rem;
+      color: #DC4E41;
+    }
     .form-item{
       display: flex;
       &.validFailed{
@@ -31,6 +38,7 @@
         flex: 1;
       }
       >div.get-code-btn{
+        position: relative;
         display: inline-block;
         line-height: 37px;
         margin-left: 12px;
@@ -38,6 +46,61 @@
         background-color: #006FBA;
         color: #fff;
         cursor: pointer;
+        &.loading{
+          padding-left: 4rem;
+        }
+        .loader-container{
+          position: absolute;
+          left: 10px;
+          width: 2rem;
+          height: 2rem;
+          top: 50%;
+          transform: translate(0,-50%);
+          .loader,
+          .loader:after {
+            border-radius: 50%;
+            width: 100%;
+            height:100%;
+          }
+          .loader {
+            font-size: 10px;
+            position: relative;
+            text-indent: -9999em;
+            border-top: 0.2em solid rgba(255, 255, 255, 0.2);
+            border-right: 0.2em solid rgba(255, 255, 255, 0.2);
+            border-bottom: 0.2em solid rgba(255, 255, 255, 0.2);
+            border-left: 0.2em solid #ffffff;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: load8 1.1s infinite linear;
+            animation: load8 1.1s infinite linear;
+          }
+          @-webkit-keyframes load8 {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          @keyframes load8 {
+            0% {
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+        }
+        .text{
+          display: inline-block;
+        }
+
         &.disabled{
           background-color: #aaa;
         }

@@ -45,6 +45,9 @@ export class ConfirmComponent implements OnInit {
       console.log(result);
       this.infomationService.signup_form.uid=result['data'].uid;
       this.router.navigate(['./view/payment']);
+    },error=>{
+      this.infomationService.setInfomationCorrect();
+      this.Review(null);
     })
   }
   Review(event){
