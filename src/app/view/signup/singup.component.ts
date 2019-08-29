@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RequestService } from '../../services/request.service';
 import { Router } from '@angular/router';
 import { Validator } from '../../services/validator';
+import apiConifg from '../../../assets/api.json';
 declare var grecaptcha;
 @Component({
   selector: 'app-signup',
@@ -18,6 +19,7 @@ export class SignupComponent implements OnInit {
   public verifyEmailBtnSeconds:number=60;
   private recaptchaWigetId:any=null;
   public emailCodeRequesting:boolean=false;
+  public totalPrice:string='';
   constructor(
     public infomationService:InfoMationService,
     private formBuilder: FormBuilder,
@@ -33,15 +35,15 @@ export class SignupComponent implements OnInit {
       window['signup-component']=this;
       window['callBack']=this.recaptchaLoaded;
     }
-    this.requestService.get('/payment/checkout',{}).subscribe(result=>{
+    this.requestService.get(apiConifg.checkout.url,{}).subscribe(result=>{
       this.infomationService.currency=result['data']['currency'];
       this.infomationService.stripePublicKey=result['data']['stripePublicKey']
     })
   }
   recaptchaLoaded(){
-    let that=window['signup-component'];
+    let that=window['signup-component']||this;
     that.recaptchaWigetId = grecaptcha.render('recaptchaContainer', {
-      'sitekey' : '6LeNBLIUAAAAAOjH5qRyqtAEdHhUFaXksAU0u-R-',
+      'sitekey' : apiConifg.recaptchaKey,//'6LeNBLIUAAAAAOjH5qRyqtAEdHhUFaXksAU0u-R-',
       'callback' : (response)=>{
         that.verifyCallback(response);
       },
@@ -49,7 +51,7 @@ export class SignupComponent implements OnInit {
     });
   }
   verifyCallback(response){
-    this.requestService.get('/payment/recaptcha',{userResponse:response}).subscribe(result=>{
+    this.requestService.get(apiConifg.recaptcha.url,{userResponse:response}).subscribe(result=>{
       let data=JSON.parse(result['data']);
       this.infomationService.signup_form.isNotRobot=data.success;
       this.infomationService.formValid.isNotRobot.valid=true;
@@ -74,9 +76,11 @@ export class SignupComponent implements OnInit {
   getTotalProce(){
     let count=this.infomationService.signup_form.count;
     if(count>0){
-      this.requestService.get('/payment/amount',{'number':count}).subscribe(result=>{
+      this.requestService.get(apiConifg.amount.url,{'number':count}).subscribe(result=>{
         this.infomationService.signup_form['total']=parseFloat(result['data']['amount']);
         this.infomationService.formValid.total.valid=true;
+        let num=parseFloat(result['data']['amount'])/100;
+        this.totalPrice=num.toFixed(2);
         this.infomationService.checkValid();
         console.log(this.infomationService.formValid);
       })
@@ -94,7 +98,7 @@ export class SignupComponent implements OnInit {
         clearInterval(this.verifyEmailBtnIntervel);
       }
     },1000)
-    this.requestService.get('/payment/code',{'email':this.infomationService.signup_form.email}).subscribe(result=>{
+    this.requestService.get(apiConifg.code.url,{'email':this.infomationService.signup_form.email,'firstName':this.infomationService.signup_form.firstname}).subscribe(result=>{
       console.log(result['data'].key)
       this.infomationService.signup_form.key=result['data'].key;
       this.infomationService.formValid.key.valid=true;

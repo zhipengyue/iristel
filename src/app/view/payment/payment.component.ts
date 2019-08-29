@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StripeService, Elements, Element as StripeElement, ElementsOptions,StripeJS,StripeInstance,StripeFactoryService} from "ngx-stripe";
 import { Router } from '@angular/router';
 import { RequestService } from '../../services/request.service';
+import apiConifg from '../../../assets/api.json';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -73,7 +74,6 @@ export class PaymentComponent implements OnInit,AfterViewInit {
       .createToken(this.card, { name })
       .subscribe(result => {
         if (result.token) {
-          console.log(result.token)
           // this.stripeService.paymentRequest.
           // Use the token to create a charge or a customer
           // https://stripe.com/docs/charges
@@ -83,7 +83,7 @@ export class PaymentComponent implements OnInit,AfterViewInit {
             amount:this.infomationService.signup_form.total,
             token:result.token.id
           }
-          this.requestService.post('/payment/charge'+this.requestService.getParamStr(params),params).subscribe(result=>{
+          this.requestService.post(apiConifg.charge.url+this.requestService.getParamStr(params),params).subscribe(result=>{
             console.log(result)
             this.isInRequesting=false;
             if(result['data']&&result['data']['status']&&result['data']['status']=='succeeded'){
@@ -94,9 +94,10 @@ export class PaymentComponent implements OnInit,AfterViewInit {
             this.infomationService.haveRequestPayment=true;
             this.router.navigate(['./view/result']);
           },error=>{
-            this.infomationService.setPayResult();
+            this.isInRequesting=false;
+            this.infomationService.setPayResult(error.statusText+','+error.error.data);
+            this.router.navigate(['./view/signup']);
           })
-          
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);

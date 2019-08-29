@@ -16,7 +16,7 @@ export class RouteguardService implements CanActivate{
     // 返回值 true: 跳转到当前路由 false: 不跳转到当前路由
     // 当前路由名称
     var path = route.routeConfig.path;  
-    const nextRoute = ['view/confirm', 'view/payment', 'view/result'];
+    const nextRoute = ['view/signup','view/confirm', 'view/payment', 'view/result'];
     // let isLogin = userModel.isLogin;  // 是否登录
     // 当前路由是nextRoute指定页时
     if (nextRoute.indexOf(path) >= 0) {
@@ -34,6 +34,14 @@ export class RouteguardService implements CanActivate{
           return true;
         }else{
           this.router.navigate(['./view/signup'])
+          return false;
+        }
+      }
+      if(path==='view/signup'){
+        if(this.infomationService.index_infomationHaveRead){
+          return true;
+        }else{
+          this.router.navigate(['./view/index']);
           return false;
         }
       }

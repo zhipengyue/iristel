@@ -1,0 +1,13 @@
+
+<section class="content index">
+  <h1>{{infomationService.htmlText.index.title}}</h1>
+  <div class="card-outer">
+    <section>
+      <div class="infomation" [innerHTML]="infomationService.htmlText.index.content.infomation"></div>
+      <a class="ppt" href="./assets/infomation.pptx" ><span>{{infomationService.htmlText.index.content.pptText}}</span> <i class="glyphicon glyphicon-file ppt"></i></a>
+      <button class="btn btn-primary btn-arrow-long iristel-glyphicon-arrow-right" (click)="signUp($event)">{{infomationService.htmlText.index.content.btnText}}</button>
+      <div class="clear"></div>
+    </section>
+  </div>
+</section>
+

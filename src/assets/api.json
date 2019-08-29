@@ -1,0 +1,27 @@
+{
+    "charge":{
+        "description":"payment",
+        "url":"/payment/charge"
+    },
+    "signup":{
+        "description":"signup",
+        "url":"/payment/userinfo"
+    },
+    "code":{
+        "description":"verify email",
+        "url":"/payment/code"
+    },
+    "amount":{
+        "description":"get the total price",
+        "url":"/payment/amount"
+    },
+    "recaptcha":{
+        "description":"get the total price",
+        "url":"/payment/recaptcha"
+    },
+    "checkout":{
+        "description":"get the currency",
+        "url":"/payment/checkout"
+    },
+    "recaptchaKey":"6LeNBLIUAAAAAOjH5qRyqtAEdHhUFaXksAU0u-R-"
+}

@@ -1,41 +1,41 @@
 
 <section class="content signup">
-  <h1>Sign up</h1>
+  <h1>{{infomationService.htmlText.signup.title}}</h1>
   <div class="card-outer">
-    <div class="alert alert-danger" role="alert" *ngIf="!infomationService.infomation_correct">
-        Your registration information is incorrect. Please verify that your email address is correct.
-    </div>
+    <!-- <div class="alert alert-danger" role="alert" *ngIf="!infomationService.infomation_correct">
+        {{infomationService.htmlText.signup.signupInfomationError}}
+    </div> -->
     <section>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.companyname.valid}">
-        <label for="companyname">Company name</label>
+        <label for="companyname">{{infomationService.htmlText.signup.form.companyname.labelName}}</label>
         <input type="text" [(ngModel)]="infomationService.signup_form.companyname" class="form-control" placeholder="{{infomationService.formValid.companyname.placeholder}}" (ngModelChange)="checkValue('companyname')" (focusout)="checkValue('companyname')">
         <div class="error-container" *ngIf="!infomationService.formValid.companyname.valid">
           {{infomationService.formValid.companyname.error}}
         </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.address.valid}">
-        <label for="address">Company address</label>
+        <label for="address">{{infomationService.htmlText.signup.form.address.labelName}}</label>
         <input type="text" [(ngModel)]="infomationService.signup_form.address" class="form-control" placeholder="{{infomationService.formValid.address.placeholder}}" (ngModelChange)="checkValue('address')" (focusout)="checkValue('address')">
         <div class="error-container" *ngIf="!infomationService.formValid.address.valid">
           {{infomationService.formValid.address.error}}
         </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.firstname.valid}">
-        <label for="firstname">Frist name</label>
+        <label for="firstname">{{infomationService.htmlText.signup.form.firstname.labelName}}</label>
         <input type="text" [(ngModel)]="infomationService.signup_form.firstname" class="form-control" placeholder="{{infomationService.formValid.firstname.placeholder}}" (ngModelChange)="checkValue('firstname')" (focusout)="checkValue('firstname')">
         <div class="error-container" *ngIf="!infomationService.formValid.firstname.valid">
           {{infomationService.formValid.firstname.error}}
         </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.lastname.valid}">
-        <label for="lastname">Last name</label>
+        <label for="lastname">{{infomationService.htmlText.signup.form.lastname.labelName}}</label>
         <input type="text" [(ngModel)]="infomationService.signup_form.lastname" class="form-control" placeholder="{{infomationService.formValid.lastname.placeholder}}"  (ngModelChange)="checkValue('lastname')"  (focusout)="checkValue('lastname')">
         <div class="error-container" *ngIf="!infomationService.formValid.lastname.valid">
           {{infomationService.formValid.lastname.error}}
         </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.email.valid}">
-        <label for="email">Email</label>
+        <label for="email">{{infomationService.htmlText.signup.form.email.labelName}}</label>
         <div class="form-item">
             <input type="email" [(ngModel)]="infomationService.signup_form.email" class="form-control" placeholder="{{infomationService.formValid.email.placeholder}}" (ngModelChange)="checkValue('email')" (focusout)="checkValue('email')">
         </div>
@@ -49,7 +49,7 @@
                 <div class="loader-container" *ngIf="emailCodeRequesting">
                   <div class="loader"></div>
                 </div>
-                <div class="text">Get email verification code</div>
+                <div class="text">{{infomationService.htmlText.signup.form.verificationBtn.text}}</div>
             <ng-container *ngIf="verifyEmailBtnDisable">
                 ({{verifyEmailBtnSeconds}})
             </ng-container>
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.phone.valid}">
-        <label for="phone">Phone number</label>
+        <label for="phone">{{infomationService.htmlText.signup.form.phone.labelName}}</label>
         <input type="tel" [(ngModel)]="infomationService.signup_form.phone" class="form-control" placeholder="{{infomationService.formValid.phone.placeholder}}" (ngModelChange)="checkValue('phone')" (focusout)="checkValue('phone')">
         <div class="error-container" *ngIf="!infomationService.formValid.phone.valid">
           {{infomationService.formValid.phone.error}}
@@ -76,7 +76,7 @@
           </div>
       </div>
       <div class="form-group" [ngClass]="{'validFailed':!infomationService.formValid.count.valid||!infomationService.formValid.total.valid}">
-        <label for="liscencecount">Number of endpoints(licenses)</label>
+        <label for="liscencecount">{{infomationService.htmlText.signup.form.licenses.labelName}}</label>
         <div class="totalprice">
           <div class="count">
             <input type="number" [(ngModel)]="infomationService.signup_form.count" placeholder="{{infomationService.formValid.count.placeholder}}" (ngModelChange)="checkValue('count')" (focusout)="checkValue('count')">
@@ -87,15 +87,15 @@
           </div>
           <button class="request-price-btn" type="button" [ngClass]="{'disabled':infomationService.signup_form.count<=0}" (click)="getTotalProce()">Get total price</button>
           <div class="total">
-            <i class="price">{{infomationService.signup_form.total}}</i> <i>{{infomationService.currency}}</i>
+            <i class="price">{{(infomationService.signup_form.total/100).toFixed(2)}}</i> <i>{{infomationService.currency}}</i>
           </div>
           <div class="error-container" *ngIf="!infomationService.formValid.total.valid">
             {{infomationService.formValid.total.error}}
           </div>
         </div>
       </div>
-      <button type="button" *ngIf="infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn" [ngClass]="{'disabled':infomationService.signup_submiteBtn_disabled}">Next</button>
-      <button type="submit" *ngIf="!infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn" (click)="nextPage()">Next</button>
+      <button type="button" *ngIf="infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn" [ngClass]="{'disabled':infomationService.signup_submiteBtn_disabled}">{{infomationService.htmlText.signup.form.nextBtn.text}}</button>
+      <button type="submit" *ngIf="!infomationService.signup_submiteBtn_disabled" class="btn btn-default submit-btn" (click)="nextPage()">{{infomationService.htmlText.signup.form.nextBtn.text}}</button>
       <div class="clear"></div>
     </section>
   </div>

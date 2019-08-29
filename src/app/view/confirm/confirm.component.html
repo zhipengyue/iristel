@@ -1,43 +1,43 @@
 
 <section class="content infomation">
-  <h1>Registration information</h1>
+  <h1>{{infomationService.htmlText.registration.title}}</h1>
   <div class="card-outer">
     <form (ngSubmit)="signupEvent()">
       <div class="form-group">
-        <label for="companyname">Company name</label>
+        <label for="companyname">{{infomationService.htmlText.signup.form.companyname.labelName}}</label>
         <div class="text">{{infomationService.signup_form.companyname}}</div>
       </div>
       <div class="form-group">
-        <label for="address">Company address</label>
+        <label for="address">{{infomationService.htmlText.signup.form.address.labelName}}</label>
         <div class="text">{{infomationService.signup_form.address}}</div>
       </div>
       <div class="form-group">
-        <label for="firstname">Frist name</label>
+        <label for="firstname">{{infomationService.htmlText.signup.form.firstname.labelName}}</label>
         <div class="text">{{infomationService.signup_form.firstname}}</div>
       </div>
       <div class="form-group">
-        <label for="lastname">Last name</label>
+        <label for="lastname">{{infomationService.htmlText.signup.form.lastname.labelName}}</label>
         <div class="text">{{infomationService.signup_form.lastname}}</div>
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">{{infomationService.htmlText.signup.form.email.labelName}}</label>
         <div class="text">{{infomationService.signup_form.email}}</div>
       </div>
       <div class="form-group">
-        <label for="phone">Phone number</label>
+        <label for="phone">{{infomationService.htmlText.signup.form.phone.text}}</label>
         <div class="text">{{infomationService.signup_form.phone}}</div>
       </div>
       <div class="form-group">
-        <label for="liscencecount">Number of endpoints(licenses)</label>
+        <label for="liscencecount">{{infomationService.htmlText.signup.form.licenses.text}}</label>
         <div class="totalprice">
           <div class="total">
-            <i class="price">{{infomationService.signup_form.total}}</i> <i>CAD</i>
+            <i class="price">{{(infomationService.signup_form.total/100).toFixed(2)}}</i> <i>CAD</i>
           </div>
         </div>
       </div>
       <div class="button-container">
-        <button class="btn btn-default review-btn" href="#" role="button" (click)="Review($event)">Review</button>
-        <button type="submit" class="btn btn-default submit-btn">Sign up</button>
+        <button class="btn btn-default review-btn" href="#" role="button" (click)="Review($event)">{{infomationService.htmlText.registration.reviewBtn}}</button>
+        <button type="submit" class="btn btn-default submit-btn">{{infomationService.htmlText.registration.signupBtn}}</button>
       </div>
       <div class="clear"></div>
     </form>

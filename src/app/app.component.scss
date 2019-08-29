@@ -95,3 +95,36 @@ section>h1{
     }
   }
 }
+.messageContainer{
+  position: fixed;
+  // top: -30px;
+  width: 100%;
+  max-width: calc(1060px - 200px);
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,0);
+  text-align: center;
+  .alert.alert-warning{
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #a94442;
+    padding: 15px;
+    padding-right: 26px;
+    position: absolute;
+    top:0;
+    left: 50%;
+    transform: translate(-50%,-100%);
+    width: calc(1060px - 300px);;
+    button{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: inherit;
+      font-size: 21px;
+    }
+    transition: transform 1s;
+  }
+  &.show{
+    top: 0;
+  }
+}

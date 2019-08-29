@@ -9,6 +9,7 @@ import { ResultComponent } from './view/result/result.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './view/confirm/confirm.component';
+import { IndexComponent } from './view/index/index.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ConfirmComponent } from './view/confirm/confirm.component';
     SignupComponent,
     PaymentComponent,
     ResultComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    IndexComponent
   ],
   imports: [
     HttpClientModule,

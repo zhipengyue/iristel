@@ -1,0 +1,90 @@
+{
+  "index":{
+    "title":"Infomation",
+    "content":{
+      "infomation":"Regardless of the size of your organization, we believe the fundamental requirements in cybersecurity management are the same, it should be:<br><b>Effective</b> and <b>efficient</b><br><b>Fast</b> and <b>easy to deploy </b><br><b>Highly scalable</b>  and <b>cost-effective</b> <br>With Iristel’s iMDR (intelligent Managed Detect & Response), you get:<br>A comprehensive cybersecurity solution that leverages next-gen AI based technology, backed by 24x7 Iristel Security Operation Center, with minimum-to-zero interference to existing business processesIristel iMDR deploys in days, not weeks or even months.<br>Simple monthly subscription model, for as little as $23 CAD/endpoint/month, we take care of the entirety of the cybersecurity management.",
+      "pptText":"Iristel iMDR cybersecurity solution Aug 2019- for web dev",
+      "pptImage":"",
+      "btnText":"Sign up"
+    }
+  },
+  "signup":{
+    "title":"Sign up",
+    "signupInfomationError":"Your registration information is incorrect. Please verify that your email address is correct.",
+    "form":{
+      "companyname":{
+       "labelName":"Company name",
+       "placeholder":"Please enter your company name",
+       "error":"Is not can be empty"
+      },
+      "address":{
+        "labelName":"Company address",
+        "placeholder":"Please enter your company address",
+        "error":"Is not can be empty"
+      },
+      "firstname":{
+        "labelName":"Frist name",
+        "placeholder":"Please enter your firstName",
+        "error":"Is not can be empty"
+      },
+      "lastname":{
+        "labelName":"Last name",
+        "placeholder":"Please enter your lastName",
+        "error":"Is not can be empty"
+      },
+      "email":{
+        "labelName":"Email",
+        "placeholder":"Please enter your email",
+        "error":"Is not can be empty and check that the email address is correct"
+      },
+      "code":{
+        "placeholder":"Please enter the validation code you received in your mailbox",
+        "error":"Is not can be empty and just is number"
+      },
+      "verificationBtn":{
+        "text":"Get email verification code",
+        "error":"Please re-verify your mailbox"
+      },
+      "phone":{
+        "labelName":"Phone number",
+        "placeholder":"Please enter your phone number",
+        "error":"The phone numbers is not can be empty and just contain '0~9' and '-' or '/'"
+      },
+      "isNotRobot":{
+        "error":"Human-computer interaction validation has been reset and needs to be re-validated"
+      },
+      "licenses":{
+        "labelName":"Number of endpoints(licenses)",
+        "placeholder":"Please enter count what you want to buy",
+        "error":"Is not can be empty and just is number"
+      },
+      "total":{
+        "error":"Please recapture the total price"
+      },
+      "nextBtn":{
+        "text":"Next"
+      }
+    }
+  },
+  "paymentResult":{
+    "title":"Payment result",
+    "success":{
+      "text1":"Successful payment!",
+      "text2":"We'll send licenses to your email. Please check it."
+    },
+    "failed":{
+      "text1":"Payment failed,",
+      "text2":"you can click this link to try again."
+    }
+  },
+  "payment":{
+    "title":"Payment",
+    "paymentError":"Payment failed, please try again",
+    "buyBtn":"Buy"
+  },
+  "registration":{
+    "title":"Registration information",
+    "reviewBtn":"Review",
+    "signupBtn":"Sign up"
+  }
+}

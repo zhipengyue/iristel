@@ -1,11 +1,11 @@
 <section class="content result">
-    <h1>Payment result</h1>
+    <h1>{{infomationService.htmlText.paymentResult.title}}</h1>
     <div class="card-outer">
       <div class="alert alert-success" role="alert" *ngIf="infomationService.payResult">
-          <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Successful payment！<span>We'll send licenses to your mailbox. Please check it.</span></strong>
+          <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{infomationService.htmlText.paymentResult.success.text1}}<span>{{infomationService.htmlText.paymentResult.success.text2}}</span></strong>
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="!infomationService.payResult">
-          <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Failed</strong> Payment failed,<a href="#" (click)="redo()">you can click this link to try again.</a>
+          <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Failed</strong> {{infomationService.htmlText.paymentResult.failed.text1}}<a href="#" (click)="redo()">{{infomationService.htmlText.paymentResult.failed.text2}}</a>
       </div>
     </div>
   </section>

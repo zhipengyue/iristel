@@ -1,89 +1,91 @@
 import { Injectable } from '@angular/core';
-
+import textConfig from '../../assets/text.json';
 @Injectable({
   providedIn: 'root'
 })
 export class InfoMationService {
+  public index_infomationHaveRead:boolean=false;
+  public appInstance:any=null;
   public infomation_correct:boolean=true;
   public signup_email_getcodebtn_disabled:boolean=true;
   public signup_priceBtn_disabled:boolean=true;//default
   public signup_submiteBtn_disabled:boolean=true;//default
   public signup_form:any={
-    companyname:'',
-    address:'',
-    firstname:'',
-    lastname:'',
-    email:'',
-    code:'',
-    key:'',
-    phone:'',
+    companyname:"",
+    address:"",
+    firstname:"",
+    lastname:"",
+    email:"",
+    code:"",
+    key:"",
+    phone:"",
     isNotRobot:false,
     count:0,
     total:0,
-    uid:''
+    uid:""
   }
   public formValid = {
     companyname:{
-      placeholder:'Please enter your company name',
-      error:'Is not can be empty',
-      validator:'isNotEmpty',
+      placeholder:textConfig.signup.form.companyname.placeholder,
+      error:textConfig.signup.form.companyname.error,
+      validator:"isNotEmpty",
       valid:true
     },
     address:{
-      placeholder:'Please enter your company address',
-      error:'Is not can be empty',
-      validator:'isNotEmpty',
+      placeholder:textConfig.signup.form.address.placeholder,
+      error:textConfig.signup.form.address.error,
+      validator:"isNotEmpty",
       valid:true
     },
     firstname:{
-      placeholder:'Please enter your firstName',
-      error:'Is not can be empty',
-      validator:'isNotEmpty',
+      placeholder:textConfig.signup.form.firstname.placeholder,
+      error:textConfig.signup.form.firstname.placeholder,
+      validator:"isNotEmpty",
       valid:true
     },
     lastname:{
-      placeholder:'Please enter your lastName',
-      error:'Is not can be empty',
-      validator:'isNotEmpty',
+      placeholder:textConfig.signup.form.lastname.placeholder,
+      error:textConfig.signup.form.lastname.error,
+      validator:"isNotEmpty",
       valid:true
     },
     email:{
-      placeholder:'Please enter your email',
-      error:'Is not can be empty and check that the email address is correct',
-      validator:'isEmail',
+      placeholder:textConfig.signup.form.email.placeholder,
+      error:textConfig.signup.form.email.error,
+      validator:"isEmail",
       valid:true
     },
     code:{
-      placeholder:'Please enter the validation code you received in your mailbox',
-      error:'Is not can be empty and just is number',
-      validator:'isNumber',
+      placeholder:textConfig.signup.form.code.placeholder,
+      error:textConfig.signup.form.code.error,
+      validator:"isNumber",
       valid:true
     },
     key:{
-      placeholder:'',
-      error:'Please re-verify your mailbox',
+      placeholder:"",
+      error:textConfig.signup.form.verificationBtn.error,
       valid:true
     },
     phone:{
-      placeholder:'Please enter your phone number ',
-      error:'The phone numbers is not can be empty and just contain "0~9" and "-" or "/"',
-      validator:'isPhone',
+      placeholder:textConfig.signup.form.phone.placeholder,
+      error:textConfig.signup.form.phone.error,
+      validator:"isPhone",
       valid:true
     },
     isNotRobot:{
-      error:'Human-computer interaction validation has been reset and needs to be re-validated',
+      error:textConfig.signup.form.isNotRobot.error,
       valid:true
     },
     count:{
-      placeholder:'Please enter count what you want to buy',
-      error:'Is not can be empty and just is number',
-      validator:'isNumber',
+      placeholder:textConfig.signup.form.licenses.placeholder,
+      error:textConfig.signup.form.licenses.error,
+      validator:"isNumber",
       valid:true
     },
     total:{
-      placeholder:'',
-      error:'Please recapture the total price',
-      validator:'isNumber',
+      placeholder:"",
+      error:textConfig.signup.form.total.error,
+      validator:"isNumber",
       valid:true
     }
   };
@@ -92,6 +94,7 @@ export class InfoMationService {
 
   public haveRequestPayment:boolean=false;
   public payResult:boolean=false;
+  public htmlText:any=textConfig;
   constructor() { }
 
   checkValid(){
@@ -120,15 +123,24 @@ export class InfoMationService {
     return isValid;
   }
   setInfomationCorrect(){
-    this.infomation_correct=false;
-    setTimeout(()=>{
-      this.infomation_correct=true;
-    },5000)
+    if(this.appInstance){
+      this.appInstance.showError(
+        this.htmlText.signup.signupInfomationError
+      )
+    }
   }
-  setPayResult(){
-    this.payResult=false;
-    setTimeout(()=>{
-      this.payResult=true;
-    },5000)
+  setPayResult(text){
+    // this.payResult=false;
+    // setTimeout(()=>{
+    //   this.payResult=true;
+    // },5000)
+    if(this.appInstance){
+      this.appInstance.showError(
+        text||this.htmlText.payment.paymentError
+      )
+    }
+  }
+  setApp(app){
+    this.appInstance=app;
   }
 }
