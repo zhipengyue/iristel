@@ -1,8 +1,8 @@
 {
   "index":{
-    "title":"Infomation",
+    "title":"Iristel Intelligent Managed Detect & Response iMDR",
     "content":{
-      "infomation":"Regardless of the size of your organization, we believe the fundamental requirements in cybersecurity management are the same, it should be:<br><b>Effective</b> and <b>efficient</b><br><b>Fast</b> and <b>easy to deploy </b><br><b>Highly scalable</b>  and <b>cost-effective</b> <br>With Iristel’s iMDR (intelligent Managed Detect & Response), you get:<br>A comprehensive cybersecurity solution that leverages next-gen AI based technology, backed by 24x7 Iristel Security Operation Center, with minimum-to-zero interference to existing business processesIristel iMDR deploys in days, not weeks or even months.<br>Simple monthly subscription model, for as little as $23 CAD/endpoint/month, we take care of the entirety of the cybersecurity management.",
+      "infomation":"Regardless of the size of your organization, we believe the fundamental requirements in cybersecurity management are the same, it should be:<br>Effective and efficient<br>Fast and easy to deploy <br>Highly scalable  and cost-effective <br>With Iristel’s iMDR (intelligent Managed Detect & Response), you get:<br>A comprehensive cybersecurity solution that leverages next-gen AI based technology, backed by 24x7 Iristel Security Operation Center, with minimum-to-zero interference to existing business processesIristel iMDR deploys in days, not weeks or even months.<br>Simple monthly subscription model, for as little as $23 CAD/endpoint/month, we take care of the entirety of the cybersecurity management.",
       "pptText":"Iristel iMDR cybersecurity solution Aug 2019- for web dev",
       "pptImage":"",
       "btnText":"Sign up"
@@ -15,31 +15,31 @@
       "companyname":{
        "labelName":"Company name",
        "placeholder":"Please enter your company name",
-       "error":"Is not can be empty"
+       "error":"required"
       },
       "address":{
         "labelName":"Company address",
         "placeholder":"Please enter your company address",
-        "error":"Is not can be empty"
+        "error":"required"
       },
       "firstname":{
         "labelName":"Frist name",
         "placeholder":"Please enter your firstName",
-        "error":"Is not can be empty"
+        "error":"required"
       },
       "lastname":{
         "labelName":"Last name",
         "placeholder":"Please enter your lastName",
-        "error":"Is not can be empty"
+        "error":"required"
       },
       "email":{
         "labelName":"Email",
         "placeholder":"Please enter your email",
-        "error":"Is not can be empty and check that the email address is correct"
+        "error":"Invalid email address"
       },
       "code":{
         "placeholder":"Please enter the validation code you received in your mailbox",
-        "error":"Is not can be empty and just is number"
+        "error":"invalid verification code"
       },
       "verificationBtn":{
         "text":"Get email verification code",
@@ -48,7 +48,7 @@
       "phone":{
         "labelName":"Phone number",
         "placeholder":"Please enter your phone number",
-        "error":"The phone numbers is not can be empty and just contain '0~9' and '-' or '/'"
+        "error":"required, numbers only"
       },
       "isNotRobot":{
         "error":"Human-computer interaction validation has been reset and needs to be re-validated"
@@ -58,8 +58,16 @@
         "placeholder":"Please enter count what you want to buy",
         "error":"Is not can be empty and just is number"
       },
+      "count":{
+        "labelName":"total number of licenses requested"
+      },
       "total":{
+        "labelName":"total monthly fee",
+        "buttonText":"Get quote",
         "error":"Please recapture the total price"
+      },
+      "single":{
+        "labelName":"single endpoint monthly fee"
       },
       "nextBtn":{
         "text":"Next"
@@ -69,8 +77,8 @@
   "paymentResult":{
     "title":"Payment result",
     "success":{
-      "text1":"Successful payment!",
-      "text2":"We'll send licenses to your email. Please check it."
+      "text1":"Payment went through ",
+      "text2":"You will receive an email shortly with instructions to deploy Iristel iMDR. Thank you!"
     },
     "failed":{
       "text1":"Payment failed,",
@@ -80,11 +88,11 @@
   "payment":{
     "title":"Payment",
     "paymentError":"Payment failed, please try again",
-    "buyBtn":"Buy"
+    "buyBtn":"Make payment"
   },
   "registration":{
-    "title":"Registration information",
+    "title":"Please review before proceed",
     "reviewBtn":"Review",
-    "signupBtn":"Sign up"
+    "signupBtn":"Proceed with payment"
   }
 }

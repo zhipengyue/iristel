@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { InfoMationService } from '../../services/infomation.service';
 import { Router } from '@angular/router';
 import { RequestService} from '../../services/request.service';
-import apiConifg from '../../../assets/api.json';
+// import apiConifg from '../../../assets/api.json';
 @Component({
   selector: 'app-confirm',
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent implements OnInit {
-  
   constructor(
     public infomationService:InfoMationService,
     private router:Router,
@@ -42,7 +41,7 @@ export class ConfirmComponent implements OnInit {
     // }
     // paramStr=paramStr.substr(0,paramStr.length-1);
 
-    this.requestService.post(apiConifg.signup.url+this.requestService.getParamStr(params),params).subscribe(result=>{
+    this.requestService.post(this.infomationService.apiConfig.signup.url+this.requestService.getParamStr(params),params).subscribe(result=>{
       console.log(result);
       this.infomationService.signup_form.uid=result['data'].uid;
       this.router.navigate(['./view/payment']);

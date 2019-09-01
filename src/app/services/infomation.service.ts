@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import textConfig from '../../assets/text.json';
+import apiJson from '../../assets/api.json';
+import { RequestService } from './request.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,7 +41,7 @@ export class InfoMationService {
     },
     firstname:{
       placeholder:textConfig.signup.form.firstname.placeholder,
-      error:textConfig.signup.form.firstname.placeholder,
+      error:textConfig.signup.form.firstname.error,
       validator:"isNotEmpty",
       valid:true
     },
@@ -95,8 +97,51 @@ export class InfoMationService {
   public haveRequestPayment:boolean=false;
   public payResult:boolean=false;
   public htmlText:any=textConfig;
-  constructor() { }
+  public apiConfig:any=null;
+  constructor(
+    private requestService:RequestService
+  ) {
+    requestService.get('./assets/text.json',{}).subscribe((textConfig:any)=>{
+      console.log(textConfig) 
+      this.formValid['companyname'].placeholder=textConfig.signup.form.companyname.placeholder;
+      this.formValid['companyname'].error=textConfig.signup.form.companyname.error;
+      this.formValid['address'].placeholder=textConfig.signup.form.address.placeholder;
+      this.formValid['address'].error=textConfig.signup.form.address.error;
+      this.formValid['firstname'].placeholder=textConfig.signup.form.firstname.placeholder;
+      this.formValid['firstname'].error=textConfig.signup.form.firstname.error;
+      this.formValid['lastname'].placeholder=textConfig.signup.form.lastname.placeholder;
+      this.formValid['lastname'].error=textConfig.signup.form.lastname.error;
+      this.formValid['email'].placeholder=textConfig.signup.form.email.placeholder;
+      this.formValid['email'].error=textConfig.signup.form.email.error;
+      this.formValid['code'].placeholder=textConfig.signup.form.code.placeholder;
+      this.formValid['code'].error=textConfig.signup.form.code.error;
+      this.formValid['key'].error=textConfig.signup.form.verificationBtn.error;
+      this.formValid['phone'].placeholder=textConfig.signup.form.phone.placeholder;
+      this.formValid['phone'].error=textConfig.signup.form.phone.error;
+      this.formValid['isNotRobot'].error=textConfig.signup.form.phone.error;
+      this.formValid['count'].placeholder=textConfig.signup.form.licenses.placeholder;
+      this.formValid['count'].error=textConfig.signup.form.licenses.error;
+      this.formValid['total'].placeholder='';
+      this.formValid['total'].error=textConfig.signup.form.total.error;
+      this.htmlText=textConfig;
+    })
+    // requestService.get('./assets/api.json',{}).subscribe((:any)=>{
 
+    // })
+  }
+  getApiConfig(){
+    return new Promise((success,error)=>{
+      if(this.apiConfig){
+        success(this.apiConfig)
+      }else{
+        this.requestService.get('./assets/api.json',{}).subscribe((result:any)=>{
+          this.apiConfig=result;
+          success(result)
+        })
+      }
+    })
+    
+  }
   checkValid(){
     let fileds=Object.keys(this.formValid);
     let isValid=true;

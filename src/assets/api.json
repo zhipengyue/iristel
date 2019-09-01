@@ -11,6 +11,9 @@
         "description":"verify email",
         "url":"/payment/code"
     },
+    "checkCode":{
+        "url":"/payment/checkCode"
+    },
     "amount":{
         "description":"get the total price",
         "url":"/payment/amount"

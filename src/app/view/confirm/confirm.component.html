@@ -24,17 +24,29 @@
         <div class="text">{{infomationService.signup_form.email}}</div>
       </div>
       <div class="form-group">
-        <label for="phone">{{infomationService.htmlText.signup.form.phone.text}}</label>
+        <label for="phone">{{infomationService.htmlText.signup.form.phone.labelName}}</label>
         <div class="text">{{infomationService.signup_form.phone}}</div>
       </div>
       <div class="form-group">
-        <label for="liscencecount">{{infomationService.htmlText.signup.form.licenses.text}}</label>
+        <label for="">{{infomationService.htmlText.signup.form.count.labelName}}</label>
+        <div class="text">{{infomationService.signup_form.count}}</div>
+      </div>
+      <div class="form-group">
+        <label for="liscencecount">{{infomationService.htmlText.signup.form.total.labelName}}</label>
         <div class="totalprice">
           <div class="total">
             <i class="price">{{(infomationService.signup_form.total/100).toFixed(2)}}</i> <i>CAD</i>
           </div>
         </div>
       </div>
+      <!-- <div class="form-group">
+          <label for="liscencecount">{{infomationService.htmlText.signup.form.single.labelName}}</label>
+          <div class="totalprice">
+            <div class="total">
+              <i class="price">{{((infomationService.signup_form.total/100/infomationService.signup_form.count)||0).toFixed(2)}}</i> <i>CAD</i>
+            </div>
+          </div>
+        </div> -->
       <div class="button-container">
         <button class="btn btn-default review-btn" href="#" role="button" (click)="Review($event)">{{infomationService.htmlText.registration.reviewBtn}}</button>
         <button type="submit" class="btn btn-default submit-btn">{{infomationService.htmlText.registration.signupBtn}}</button>

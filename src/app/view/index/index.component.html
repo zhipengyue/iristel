@@ -4,7 +4,14 @@
   <div class="card-outer">
     <section>
       <div class="infomation" [innerHTML]="infomationService.htmlText.index.content.infomation"></div>
-      <a class="ppt" href="./assets/infomation.pptx" ><span>{{infomationService.htmlText.index.content.pptText}}</span> <i class="glyphicon glyphicon-file ppt"></i></a>
+      <!-- <a class="ppt" href="./assets/infomation.pptx" ><span>{{infomationService.htmlText.index.content.pptText}}</span> <i class="glyphicon glyphicon-file ppt"></i></a> -->
+      <div class="ppt">
+        <h2>{{infomationService.htmlText.index.content.pptText}}</h2>
+        <div class="ppt_content">
+          <img src="./assets/images/ppt_1.gif" alt="" srcset="">
+          <img src="./assets/images/ppt_2.gif" alt="" srcset="">
+        </div>
+      </div>
       <button class="btn btn-primary btn-arrow-long iristel-glyphicon-arrow-right" (click)="signUp($event)">{{infomationService.htmlText.index.content.btnText}}</button>
       <div class="clear"></div>
     </section>

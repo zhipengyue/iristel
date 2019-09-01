@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StripeService, Elements, Element as StripeElement, ElementsOptions,StripeJS,StripeInstance,StripeFactoryService} from "ngx-stripe";
 import { Router } from '@angular/router';
 import { RequestService } from '../../services/request.service';
-import apiConifg from '../../../assets/api.json';
+// import apiConifg from '../../../assets/api.json';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -83,7 +83,7 @@ export class PaymentComponent implements OnInit,AfterViewInit {
             amount:this.infomationService.signup_form.total,
             token:result.token.id
           }
-          this.requestService.post(apiConifg.charge.url+this.requestService.getParamStr(params),params).subscribe(result=>{
+          this.requestService.post(this.infomationService.apiConfig.charge.url+this.requestService.getParamStr(params),params).subscribe(result=>{
             console.log(result)
             this.isInRequesting=false;
             if(result['data']&&result['data']['status']&&result['data']['status']=='succeeded'){

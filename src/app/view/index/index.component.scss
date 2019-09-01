@@ -4,40 +4,57 @@
   
   font-family: NeueHaasGroteskDisp Pro XLt,Verdana,Helvetica,Arial,sans-serif;
   .infomation{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #7C7C7C;
     b{
       color:#0064B1!important;
     }
     margin-bottom: 10px;
   }
-  a.ppt{
-    display: block;
-    padding: 10px;
-    width: 230px;
-    border: 1px solid #A6A9AB;
-    display: flex;
-    text-decoration: none;
-    color:#7C7C7C;
-    transition: all 0.3s;
-    &:hover{
-      color: #006FBA;
-      i.ppt{
-        transition: all 0.3s;
-        color: #006FBA;
-      }
-    }
-    span{
-      // display: inline-block;
-      word-wrap: wrap wr;
-      margin-right: 10px;
-      line-height: 1.5rem;
-    }
-    i.ppt{
-      color:#7C7C7C;
-      // display: inline-block;
+  // a.ppt{
+  //   display: block;
+  //   padding: 10px;
+  //   width: 230px;
+  //   border: 1px solid #A6A9AB;
+  //   display: flex;
+  //   text-decoration: none;
+  //   color:#7C7C7C;
+  //   transition: all 0.3s;
+  //   &:hover{
+  //     color: #006FBA;
+  //     i.ppt{
+  //       transition: all 0.3s;
+  //       color: #006FBA;
+  //     }
+  //   }
+  
+  //   span{
+  //     // display: inline-block;
+  //     word-wrap: wrap wr;
+  //     margin-right: 10px;
+  //     line-height: 1.5rem;
+  //   }
+  //   i.ppt{
+  //     color:#7C7C7C;
+  //     // display: inline-block;
       
-      font-size: 3rem;
+  //     font-size: 3rem;
+  //   }
+  // }
+  .ppt{
+    h2{
+      font-size: 2.4rem;
+      color: #7C7C7C;
+    }
+    .ppt_content{
+      margin-top: 20px;
+      img{
+        width: 100%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      }
+      img:nth-child(2){
+        margin-top: 20px;
+      }
     }
   }
   .btn{
@@ -90,5 +107,10 @@
       background-position:50%;
       top:37%;
     }
+  }
+  .card-outer{
+    font-size: 1.6rem;
+    box-shadow: none;
+    padding-top: 0px;
   }
 }

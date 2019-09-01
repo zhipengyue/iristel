@@ -43,7 +43,7 @@
           {{infomationService.formValid.email.error}}
         </div>
         <div class="form-item" style="margin-top: 10px;" [ngClass]="{'validFailed':!infomationService.formValid.code.valid}">
-          <input type="number" class="verify-email-code form-control" [(ngModel)]="infomationService.signup_form.code" placeholder="{{infomationService.formValid.code.placeholder}}" (ngModelChange)="checkValue('code')" (focusout)="checkValue('code')">
+          <input type="number" class="verify-email-code form-control" [(ngModel)]="infomationService.signup_form.code" placeholder="{{infomationService.formValid.code.placeholder}}" (ngModelChange)="checkValue('code','modelChange')" (focusout)="checkValue('code','focusout')"><!---->
           <input type="text" class="verify-email-key form-control hide" [(ngModel)]="infomationService.signup_form.key" id="key" name="key">
           <div class="get-code-btn" [ngClass]="{'disabled':!infomationService.formValid.email.valid||verifyEmailBtnDisable,'loading':emailCodeRequesting}" (click)="checkValue('email');getEmailVerifyCode(!infomationService.formValid.email.valid||verifyEmailBtnDisable)">
                 <div class="loader-container" *ngIf="emailCodeRequesting">
@@ -85,10 +85,15 @@
               {{infomationService.formValid.count.error}}
             </div>
           </div>
-          <button class="request-price-btn" type="button" [ngClass]="{'disabled':infomationService.signup_form.count<=0}" (click)="getTotalProce()">Get total price</button>
+          <button class="request-price-btn" type="button" [ngClass]="{'disabled':infomationService.signup_form.count<=0}" (click)="getTotalProce()">{{infomationService.htmlText.signup.form.total.buttonText}}</button>
           <div class="total">
-            <i class="price">{{(infomationService.signup_form.total/100).toFixed(2)}}</i> <i>{{infomationService.currency}}</i>
+            <!-- <span>$ /month,$/endpoint/month</span> -->
+            <i class="price">{{(infomationService.signup_form.total/100).toFixed(2)}}</i><i class="time_units">/month</i> <i class="money_units">({{infomationService.currency}})</i>
           </div>
+          <div class="monovalent">
+              <!-- <span>$ /month,$/endpoint/month</span> -->
+              <i class="price">{{((infomationService.signup_form.total/100/infomationService.signup_form.count)||0).toFixed(2)}}</i><i class="time_units">/month/endpoint</i> <i class="money_units">({{infomationService.currency}})</i>
+            </div>
           <div class="error-container" *ngIf="!infomationService.formValid.total.valid">
             {{infomationService.formValid.total.error}}
           </div>
