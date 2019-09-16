@@ -1,16 +1,15 @@
 {
   "index":{
-    "title":"Iristel Intelligent Managed Detect & Response iMDR",
+    "title":"Iristel intelligent Managed Detect & Response iMDR",
     "content":{
-      "infomation":"Regardless of the size of your organization, we believe the fundamental requirements in cybersecurity management are the same, it should be:<br>Effective and efficient<br>Fast and easy to deploy <br>Highly scalable  and cost-effective <br>With Iristel’s iMDR (intelligent Managed Detect & Response), you get:<br>A comprehensive cybersecurity solution that leverages next-gen AI based technology, backed by 24x7 Iristel Security Operation Center, with minimum-to-zero interference to existing business processesIristel iMDR deploys in days, not weeks or even months.<br>Simple monthly subscription model, for as little as $23 CAD/endpoint/month, we take care of the entirety of the cybersecurity management.",
-      "pptText":"Iristel iMDR cybersecurity solution Aug 2019- for web dev",
+      "infomation":"Regardless of the size of your organization, we believe the fundamental requirements in cybersecurity management are the same, it should be:<br>• Effective and efficient<br>• Fast and easy to deploy <br>• Highly scalable  and cost-effective <br>With Iristel’s iMDR (intelligent Managed Detect & Response), you get:<br>A comprehensive cybersecurity solution that leverages next-gen AI based technology, backed by 24x7 Iristel Security Operation Center, with minimum-to-zero interference to existing business processesIristel iMDR deploys in days, not weeks or even months.<br>Simple monthly subscription model, for as little as $23 CAD/endpoint/month, we take care of the entirety of the cybersecurity management.",
       "pptImage":"",
       "btnText":"Sign up"
     }
   },
   "signup":{
     "title":"Sign up",
-    "signupInfomationError":"Your registration information is incorrect. Please verify that your email address is correct.",
+    "signupInfomationError":"Verification code",
     "form":{
       "companyname":{
        "labelName":"Company name",
@@ -25,7 +24,7 @@
       "firstname":{
         "labelName":"Frist name",
         "placeholder":"Please enter your firstName",
-        "error":"required"
+        "error":"required and cannot contain spaces"
       },
       "lastname":{
         "labelName":"Last name",

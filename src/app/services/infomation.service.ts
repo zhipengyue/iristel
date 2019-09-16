@@ -42,7 +42,7 @@ export class InfoMationService {
     firstname:{
       placeholder:textConfig.signup.form.firstname.placeholder,
       error:textConfig.signup.form.firstname.error,
-      validator:"isNotEmpty",
+      validator:"isNotContainSpace",
       valid:true
     },
     lastname:{
@@ -163,8 +163,6 @@ export class InfoMationService {
     }else{
       this.signup_submiteBtn_disabled=true;
     }
-    console.log('////////')
-    console.log(isValid)
     return isValid;
   }
   setInfomationCorrect(){

@@ -67,11 +67,95 @@
   .button-container{
     width: 100%;
     text-align: center;
-    button{
-      position: relative;
-    }
-    button.disabled{
+    // button{
+    //   position: relative;
+    // }
+    // button.disabled{
+    //     background-color: #aaa;
+    // }
+    button,.review-btn,.submit-btn{
+      font-family: NeueHaasGroteskDisp Pro XLt,Verdana,Helvetica,Arial,sans-serif;
+      background:#9fa1a0;// #006FBA;
+      width: 180px;
+      height: 44px;
+      text-align: center;
+      color: #fff;
+      border-radius: 0;
+      // float: right;
+      &.disabled{
         background-color: #aaa;
+      }
+    }
+    .review-btn{
+      position: relative;
+      transition: all 0.3s;
+      &:hover{
+        background: #006fba;
+      }
+      &:after{
+        transition: all .3s;
+        content:"";
+        position:absolute;
+        left: 20px;
+        opacity: 0;
+        background-image:url('../../../assets/images/left-arrow.png');
+        width:16px;
+        height:12px;
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:50%;
+        top:37%;
+      }
+      &:hover:after{
+        left: 10px;
+        content:"";
+        position:absolute;
+        // margin-right:10px;
+        background-image:url('../../../assets/images/left-arrow.png');
+        width:16px;
+        height:12px;
+        opacity: 1;
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:50%;
+        top:37%;
+      }
+    }
+    .submit-btn{
+      position: relative;
+      transition: all 0.3s;
+      &:hover{
+        background: #006fba;
+      }
+      &:after{
+        transition: all .3s;
+        content:"";
+        position:absolute;
+        right: 20px;
+        // margin-left:-10px;
+        opacity: 0;
+        background-image:url('../../../assets/images/right-arrow.png');
+        width:16px;
+        height:12px;
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:50%;
+        top:37%;
+      }
+      &:hover:after{
+        content:"";
+        position:absolute;
+        right: 10px;
+        // margin-left:10px;
+        background-image:url('../../../assets/images/right-arrow.png');
+        width:16px;
+        height:12px;
+        opacity: 1;
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:50%;
+        top:37%;
+      }
     }
     .loader-container{
       position: absolute;
@@ -121,21 +205,6 @@
       100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
-      }
-    }
-
-
-    button,.review-btn,.submit-btn{
-      font-family: NeueHaasGroteskDisp Pro XLt,Verdana,Helvetica,Arial,sans-serif;
-      background: #006FBA;
-      width: 180px;
-      height: 44px;
-      text-align: center;
-      color: #fff;
-      border-radius: 0;
-      // float: right;
-      &.disabled{
-        background-color: #aaa;
       }
     }
   }

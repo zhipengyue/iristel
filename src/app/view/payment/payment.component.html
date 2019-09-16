@@ -39,6 +39,7 @@
       <div id="card-element" class="field"></div>
       <div class="button-container">
         <ng-container *ngIf="isInRequesting">
+            <button class="btn btn-default review-btn disabled" href="#" role="button">{{infomationService.htmlText.registration.reviewBtn}}</button>
             <button type="button" class="btn btn-default submit-btn disabled">
               <div class="loader-container">
                 <div class="loader"></div>
@@ -47,6 +48,7 @@
             </button>
         </ng-container>
         <ng-container *ngIf="!isInRequesting">
+            <button class="btn btn-default review-btn" href="#" role="button" (click)="Review($event)">{{infomationService.htmlText.registration.reviewBtn}}</button>
             <button type="submit" class="btn btn-default submit-btn">{{infomationService.htmlText.payment.buyBtn}}</button>
         </ng-container>
       </div>

@@ -4,6 +4,9 @@
       <div class="alert alert-success" role="alert" *ngIf="infomationService.payResult">
           <strong><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{infomationService.htmlText.paymentResult.success.text1}}<span>{{infomationService.htmlText.paymentResult.success.text2}}</span></strong>
       </div>
+      <a class="button" *ngIf="infomationService.payResult" href="https://www.iristel.com">
+        Return to iristel home
+      </a>
       <div class="alert alert-danger" role="alert" *ngIf="!infomationService.payResult">
           <strong><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Failed</strong> {{infomationService.htmlText.paymentResult.failed.text1}}<a href="#" (click)="redo()">{{infomationService.htmlText.paymentResult.failed.text2}}</a>
       </div>

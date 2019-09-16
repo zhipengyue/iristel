@@ -65,6 +65,13 @@ export class SignupComponent implements OnInit {
     })
   }
   checkValue(itemName,eventTarget=null){
+    if(itemName==='count'){
+      let count=parseInt(this.infomationService.signup_form.count);
+      setTimeout(()=>{
+        this.infomationService.signup_form.count=count;
+      },0)
+      
+    }
     if(itemName!=='code'){
       let value=this.infomationService.signup_form[itemName];
       let validatorCaller=this.infomationService.formValid[itemName]['validator'];
@@ -81,6 +88,7 @@ export class SignupComponent implements OnInit {
               this.verifyEmailBtnDisable=false;
               this.verifyEmailBtnSeconds=60;
               clearInterval(this.verifyEmailBtnIntervel);
+              this.infomationService.checkValid();
             }
           })
         },300)

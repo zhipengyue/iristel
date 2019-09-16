@@ -43,7 +43,7 @@
           {{infomationService.formValid.email.error}}
         </div>
         <div class="form-item" style="margin-top: 10px;" [ngClass]="{'validFailed':!infomationService.formValid.code.valid}">
-          <input type="number" class="verify-email-code form-control" [(ngModel)]="infomationService.signup_form.code" placeholder="{{infomationService.formValid.code.placeholder}}" (ngModelChange)="checkValue('code','modelChange')" (focusout)="checkValue('code','focusout')"><!---->
+          <input type="text" class="verify-email-code form-control" [(ngModel)]="infomationService.signup_form.code" placeholder="{{infomationService.formValid.code.placeholder}}" (ngModelChange)="checkValue('code','modelChange')" (focusout)="checkValue('code','focusout')"><!---->
           <input type="text" class="verify-email-key form-control hide" [(ngModel)]="infomationService.signup_form.key" id="key" name="key">
           <div class="get-code-btn" [ngClass]="{'disabled':!infomationService.formValid.email.valid||verifyEmailBtnDisable,'loading':emailCodeRequesting}" (click)="checkValue('email');getEmailVerifyCode(!infomationService.formValid.email.valid||verifyEmailBtnDisable)">
                 <div class="loader-container" *ngIf="emailCodeRequesting">
@@ -79,7 +79,7 @@
         <label for="liscencecount">{{infomationService.htmlText.signup.form.licenses.labelName}}</label>
         <div class="totalprice">
           <div class="count">
-            <input type="number" [(ngModel)]="infomationService.signup_form.count" placeholder="{{infomationService.formValid.count.placeholder}}" (ngModelChange)="checkValue('count')" (focusout)="checkValue('count')">
+            <input type="number" step="1" [(ngModel)]="infomationService.signup_form.count" placeholder="{{infomationService.formValid.count.placeholder}}" (ngModelChange)="checkValue('count')" (focusout)="checkValue('count')">
             <input class="hide" type="number" [(ngModel)]="infomationService.signup_form.total" name="total">
             <div class="error-container" *ngIf="!infomationService.formValid.count.valid">
               {{infomationService.formValid.count.error}}

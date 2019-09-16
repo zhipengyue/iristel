@@ -9,6 +9,16 @@ export class Validator{
       formValid[name].valid=false;
     }
   }
+  public static isNotContainSpace(name,value,formValid){
+    if(value!==''){
+      formValid[name].valid=true;
+    }else{
+      formValid[name].valid=false;
+    }
+    if(value.indexOf(' ')>=0){
+      formValid[name].valid=false;
+    }
+  }
   public static isEmail(name,value,formValid){
     var reg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
 		if(reg.test(value)){

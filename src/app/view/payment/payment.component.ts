@@ -68,11 +68,20 @@ export class PaymentComponent implements OnInit,AfterViewInit {
   }
   buy() {
     //4242424242424242
+    if(this.card['_invalid']||!this.card['_complete']){
+      //
+      this.infomationService.appInstance.showError(
+        'invalid credit card'
+      )
+      return;
+    };
     this.isInRequesting=true;
     const name = this.infomationService.signup_form.firstname+' '+this.infomationService.signup_form.lastname;
     this.stripeService
       .createToken(this.card, { name })
       .subscribe(result => {
+        console.log('///token///');
+        console.log(result);
         if (result.token) {
           // this.stripeService.paymentRequest.
           // Use the token to create a charge or a customer
@@ -100,11 +109,18 @@ export class PaymentComponent implements OnInit,AfterViewInit {
           })
         } else if (result.error) {
           // Error creating the token
-          console.log(result.error.message);
+         this.dealError();
         }
+      },error=>{
+        this.dealError();
       });
     // this.payService.haveRequestPayment=true;
     // this.router.navigate(['./view/result'])
   }
-
+  dealError(){
+    this.isInRequesting=false;
+  }
+  Review(event){
+    this.router.navigate(['./view/confirm']);
+  }
 }

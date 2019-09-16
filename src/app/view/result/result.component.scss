@@ -1,4 +1,15 @@
 .content.result{
+  .card-outer{
+    .button{
+      display: inline-block;
+      text-align: center;
+      padding: 1rem;
+      color: #fff;
+      background-color:#337ab7;
+      margin-left: 50%;
+      transform: translate(-50%,0);
+    }
+  }
   .alert-danger{
     background-color: #EEEDEE;
     color:#000;

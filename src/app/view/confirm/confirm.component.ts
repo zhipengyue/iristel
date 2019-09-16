@@ -18,7 +18,6 @@ export class ConfirmComponent implements OnInit {
   ngOnInit() {
   }
   signupEvent(){
-    console.log('..signupEvent...')
     // this.router.navigate(['./view/payment']);
     let params={
       amount:this.infomationService.signup_form.total,
@@ -27,7 +26,7 @@ export class ConfirmComponent implements OnInit {
       companyName:this.infomationService.signup_form.companyname,
       email:this.infomationService.signup_form.email,
       firstName:this.infomationService.signup_form.firstname,
-      lastName:this.infomationService.signup_form.lastName,
+      lastName:this.infomationService.signup_form.lastname,
       key:this.infomationService.signup_form.key,
       numberLicenses:this.infomationService.signup_form.count,
       phoneNumber:this.infomationService.signup_form.phone
@@ -40,15 +39,19 @@ export class ConfirmComponent implements OnInit {
     //   paramStr+=key+"="+params[key]+'&'
     // }
     // paramStr=paramStr.substr(0,paramStr.length-1);
-
-    this.requestService.post(this.infomationService.apiConfig.signup.url+this.requestService.getParamStr(params),params).subscribe(result=>{
-      console.log(result);
-      this.infomationService.signup_form.uid=result['data'].uid;
+    if(!this.infomationService.signup_form.uid){
+      this.requestService.post(this.infomationService.apiConfig.signup.url+this.requestService.getParamStr(params),params).subscribe(result=>{
+        console.log(result);
+        this.infomationService.signup_form.uid=result['data'].uid;
+        this.router.navigate(['./view/payment']);
+      },error=>{
+        this.infomationService.setInfomationCorrect();
+        this.Review(null);
+      })
+    }else{
       this.router.navigate(['./view/payment']);
-    },error=>{
-      this.infomationService.setInfomationCorrect();
-      this.Review(null);
-    })
+    }
+    
   }
   Review(event){
     this.router.navigate(['./view/signup']);
